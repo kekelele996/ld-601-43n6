@@ -1,3 +1,3 @@
-export function EmptyState({ title = "暂无数据" }) {
-  return <div className="empty">{title}</div>;
+export function EmptyState({ title = "暂无数据" }: { title?: string }) {
+  return <div className="empty" role="status">{title}</div>;
 }
