@@ -1,1 +1,39 @@
 :root{font-family:"Aptos","PingFang SC",system-ui,sans-serif;color:#20211d;background:#eef1e8}body{margin:0}.shell{min-height:100vh;display:grid;grid-template-columns:260px 1fr}aside{background:#223126;color:#f5f1e6;padding:28px 20px;border-right:6px solid #d39b46}.brand{font-size:20px;font-weight:800;line-height:1.25;margin-bottom:24px}nav{display:grid;gap:8px}button{border:0;background:transparent;color:inherit;text-align:left;padding:10px 12px;border-radius:6px;cursor:pointer}button.active,button:hover{background:#f5f1e6;color:#223126}.page{padding:30px;display:grid;gap:22px}.page-head{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid #c9d0c3;padding-bottom:18px}.eyebrow{margin:0 0 8px;color:#7d4d18;text-transform:uppercase;font-size:12px;font-weight:800;letter-spacing:.08em}h1{font-size:clamp(28px,4vw,46px);margin:0;letter-spacing:0}h2{margin:0 0 14px;font-size:18px}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.stat,.panel{background:#fbfaf4;border:1px solid #d8d6c8;border-radius:8px;padding:18px}.stat span{display:block;color:#596257;font-size:13px}.stat strong{font-size:30px;color:#274335}.workbench{display:grid;grid-template-columns:2fr 1fr;gap:18px}.row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;border-top:1px solid #e4e0d3;padding:12px 0}.badge{display:inline-flex;align-items:center;min-height:24px;border-radius:999px;background:#e4efe4;color:#244b31;padding:2px 10px;font-size:12px;font-weight:800}.shared-widget,.empty{border:1px dashed #b8b09f;padding:14px;border-radius:8px}@media (max-width:760px){.shell{grid-template-columns:1fr}aside{position:static}.metrics,.workbench{grid-template-columns:1fr}.page{padding:18px}.page-head{align-items:flex-start;gap:12px;flex-direction:column}}
+
+/* ---- 障碍工单核实闭环扩展样式 ---- */
+.page-sub{margin:6px 0 0;color:#596257;font-size:13px}
+.filter-stack{display:grid;gap:10px}
+.filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.filter-label{font-size:13px;font-weight:700;color:#596257;margin-right:4px}
+.filter-chip{border:1px solid #c9d0c3;background:#fbfaf4;color:#274335;padding:6px 14px;border-radius:999px;font-size:13px}
+.filter-chip.active{background:#274335;color:#fbfaf4;border-color:#274335}
+.cell-strong{font-weight:800;color:#274335}
+.cell-stack{display:grid;gap:2px}
+.cell-desc{color:#6b7368;font-size:12px}
+.cell-hint{color:#8a8f86;font-size:12px}
+.tag-meta{display:block;color:#6b7368;font-size:12px;margin-top:2px}
+.facility-tag{min-width:170px;display:grid;gap:4px;padding:10px 12px}
+.facility-cell{display:flex;flex-wrap:wrap;gap:8px}
+.user-mini{display:grid;gap:4px;padding:10px 12px}
+.route-risk{display:grid;gap:6px}
+.route-risk.high{border-color:#d98b8b;background:#fdf2f2}
+.route-risk.risk-blocked{display:grid;gap:6px;border-color:#d98b8b;background:#fdf2f2;border-style:dashed;border-radius:8px;padding:18px}
+.risk-count{font-size:30px;font-weight:800;color:#a83a3a}
+.risk-detail{margin:0;color:#596257;font-size:12px}
+.metrics-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.metrics-single{grid-template-columns:1fr}
+.timeline ol{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.timeline-entry{display:grid;gap:4px;border-left:3px solid #d39b46;padding:2px 0 2px 12px}
+.timeline-entry time{font-size:12px;color:#7d4d18}
+.timeline-title{font-weight:700}
+.timeline-entry p{margin:0;font-size:12px;color:#596257}
+.badge.pending{background:#fdf3df;color:#7d4d18}
+.badge.approved{background:#fde2e2;color:#a83a3a}
+.badge.rejected{background:#e7e9e4;color:#596257}
+.badge.high{background:#fde2e2;color:#a83a3a}
+.badge.blocked{background:#fde2e2;color:#a83a3a}
+.badge.maintenance{background:#fdf3df;color:#7d4d18}
+.badge.available{background:#e4efe4;color:#244b31}
+.badge.low{background:#e4efe4;color:#244b31}
+.badge.medium{background:#fdf3df;color:#7d4d18}
+.badge.server-data{background:#e2ecf5;color:#254b66}

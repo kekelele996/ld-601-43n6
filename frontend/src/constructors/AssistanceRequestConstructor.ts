@@ -5,8 +5,8 @@ export const createDefaultAssistanceRequest = (overrides: Partial<AssistanceRequ
   user_id: 1 as never,
   route_plan_id: 1 as never,
   helper_id: 1 as never,
-  request_time: "2026-06-11T09:00:00Z" as never,
-  status: "BLOCKED" as never,
+  request_time: "2026-09-18T08:30:00Z" as never,
+  status: "REQUESTED" as never,
   meet_point: "meet point 1" as never,
   contact_note: "contact note 1" as never,
   ...overrides

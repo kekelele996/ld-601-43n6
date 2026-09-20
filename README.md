@@ -57,6 +57,16 @@ backend/src/routes, controllers, services, models, repositories, middlewares, co
 - MobilityType: constants/MobilityType、types/MobilityType、constructors、logTemplates、errorMessages、筛选器、展示组件/控制器均有引用。
 - FacilityStatus: constants/FacilityStatus、types/FacilityStatus、constructors、logTemplates、errorMessages、筛选器、展示组件/控制器均有引用。
 - AssistanceStatus: constants/AssistanceStatus、types/AssistanceStatus、constructors、logTemplates、errorMessages、筛选器、展示组件/控制器均有引用。
+- BarrierVerifyStatus（PENDING/APPROVED/REJECTED）：后端 constants/BarrierVerifyStatus、types/BarrierReportPayload、models/BarrierReport、services/BarrierReportService、repositories/BarrierReportRepository、constructors/BarrierReportDtoFactory；前端 constants/BarrierVerifyStatus、types/BarrierVerifyStatus、types/BarrierReport、types/VerifyDecision、types/BarrierVerifyResult、utils/formatters、constants/statusText、hooks/useBarrierVerifyFlow、pages/ReportsPage 均有引用。
+- RouteRiskLevel（LOW/MEDIUM/HIGH）：后端 constants/RouteRiskLevel、models/RoutePlan、services/BarrierReportService、repositories/RoutePlanRepository；前端 constants/RouteRiskLevel、types/RouteRiskLevel、constants/statusText、utils/formatters、components/common/RouteRiskPanel、pages/RoutesPage 均有引用。
+
+## 障碍工单核实闭环
+
+- 接口：`PATCH /api/barrier-report/:id/verify`，请求体 `{"decision": "APPROVED" | "REJECTED"}`，受 `rbacMiddleware`（admin/AUDITOR/FACILITY_MANAGER）保护。
+- 核实通过（APPROVED）：同一次请求内把关联设施状态置为 `BLOCKED`（并刷新 `last_checked_at`），再把所有 `facility_ids` 引用该设施的路线 `risk_level` 置为 `HIGH`，最后更新工单为 APPROVED；响应同时返回工单、设施、受影响路线及数量。
+- 驳回（REJECTED）：只更新工单状态，不改动设施与路线。
+- 重复处理非 `PENDING` 工单统一返回 `409 BARRIER_ALREADY_VERIFIED`；工单不存在 `404`，动作非法 `400`，关联设施缺失 `422`，越权 `403`。
+- 前端障碍工单页默认筛选“待核实”，展示关联设施与受影响路线数；操作成功后经 `useBarrierVerifyFlow` 从接口重新拉取工单/设施/路线，设施巡检与路线规划页同步显示最新结果。服务端失败直接通过消息提示，接口层不做任何本地假数据回退。
 
 ## 为什么会牵一发动全身
 

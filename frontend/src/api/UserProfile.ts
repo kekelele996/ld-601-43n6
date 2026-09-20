@@ -1,18 +1,10 @@
-import { mockData } from "../mocks/seedData";
+import { request } from "./request";
 import type { UserProfile } from "../types/UserProfile";
 
 const endpoint = "/api/user-profile";
 
 export async function listUserProfile(): Promise<UserProfile[]> {
-  if (typeof fetch !== "undefined" && endpoint.startsWith("/api") && true) {
-    try {
-      const res = await fetch(endpoint);
-      if (res.ok) return await res.json();
-    } catch {
-      // Local mock fallback keeps the UI available during offline review.
-    }
-  }
-  return [...(mockData.userProfile as unknown as UserProfile[])];
+  return request<UserProfile[]>(endpoint);
 }
 
 export async function saveUserProfile(payload: UserProfile) {
